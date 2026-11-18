@@ -7,7 +7,7 @@ import ProductCard from '@/components/ProductCard';
 export const dynamic = 'force-dynamic';
 
 const SELECT =
-  'id,name,slug,base_price,track_stock,stock,category:categories(name,slug),variants:product_variants(id,name,price,stock,is_active,sort_order),images:product_images(id,is_primary,sort_order)';
+  'id,name,slug,image_url,base_price,track_stock,stock,category:categories(name,slug),variants:product_variants(id,name,price,stock,is_active,sort_order),images:product_images(id,is_primary,sort_order)';
 
 export default async function Home() {
   const sb = supabaseServer();

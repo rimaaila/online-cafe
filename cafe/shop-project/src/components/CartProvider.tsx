@@ -11,6 +11,7 @@ export type CartItem = {
   quantity: number;
   slug: string;
   image_id: string | null;
+  image_url?: string | null;
   max: number | null;
 };
 

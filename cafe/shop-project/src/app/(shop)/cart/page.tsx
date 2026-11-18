@@ -24,6 +24,9 @@ export default function CartPage() {
               {i.image_id ? (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={imgUrl(i.image_id)!} alt="" className="h-full w-full object-cover" />
+              ) : i.image_url ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={i.image_url} alt="" className="h-full w-full object-cover" />
               ) : (
                 <div className="flex h-full items-center justify-center text-primary-500"><ChefHat /></div>
               )}

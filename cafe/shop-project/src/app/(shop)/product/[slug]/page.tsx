@@ -10,7 +10,7 @@ export default async function ProductPage({ params }: { params: { slug: string }
   const { data: p } = await sb
     .from('products')
     .select(
-      'id,name,slug,description,base_price,track_stock,stock,category:categories(name,slug),variants:product_variants(id,name,price,stock,is_active,sort_order),images:product_images(id,variant_id,is_primary,sort_order),tags:product_tags(tag:tags(name))'
+      'id,name,slug,image_url,description,base_price,track_stock,stock,category:categories(name,slug),variants:product_variants(id,name,price,stock,is_active,sort_order),images:product_images(id,variant_id,is_primary,sort_order),tags:product_tags(tag:tags(name))'
     )
     .eq('slug', params.slug)
     .eq('status', 'active')

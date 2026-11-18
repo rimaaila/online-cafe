@@ -29,7 +29,7 @@ export default async function MenuPage({ searchParams }: { searchParams: SP }) {
   let query = sb
     .from('products')
     .select(
-      'id,name,slug,base_price,track_stock,stock,created_at,category:categories(name,slug),variants:product_variants(id,name,price,stock,is_active,sort_order),images:product_images(id,is_primary,sort_order)'
+      'id,name,slug,image_url,base_price,track_stock,stock,created_at,category:categories(name,slug),variants:product_variants(id,name,price,stock,is_active,sort_order),images:product_images(id,is_primary,sort_order)'
     )
     .eq('status', 'active')
     .limit(500);

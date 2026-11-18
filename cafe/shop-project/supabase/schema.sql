@@ -37,6 +37,7 @@ create table public.products (
   track_stock boolean not null default true,
   stock int not null default 0 check (stock >= 0),            -- used when the product has no variants
   low_stock_threshold int not null default 5,
+  image_url text,                                              -- optional external placeholder image
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );

@@ -20,6 +20,7 @@ export async function POST(req: Request) {
     category_id: b.category_id || null,
     base_price: Math.max(0, Number(b.base_price) || 0),
     status: ['active', 'draft', 'archived'].includes(b.status) ? b.status : 'draft',
+    image_url: String(b.image_url || '').trim() || null,
     is_featured: !!b.is_featured,
     track_stock: !!b.track_stock,
     stock: Math.max(0, parseInt(b.stock) || 0),

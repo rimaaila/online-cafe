@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { canManageCatalog, requireStaff } from '@/lib/auth';
 import { supabaseAdmin } from '@/lib/supabase/admin';
 import { money } from '@/lib/format';
-import { imgUrl, primaryImage } from '@/lib/products';
+import { cardImage } from '@/lib/products';
 import { updateStock } from '../../actions';
 import Flash from '@/components/Flash';
 
@@ -25,7 +25,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Rec
 
   let query = a
     .from('products')
-    .select('id,name,slug,base_price,status,track_stock,stock,low_stock_threshold,category:categories(name),variants:product_variants(id,name,stock,is_active),images:product_images(id,is_primary,sort_order)')
+    .select('id,name,slug,image_url,base_price,status,track_stock,stock,low_stock_threshold,category:categories(name),variants:product_variants(id,name,stock,is_active),images:product_images(id,is_primary,sort_order)')
     .order('created_at', { ascending: false })
     .limit(300);
   if (q) query = query.ilike('name', `%${q.replace(/[%,]/g, '')}%`);
@@ -58,7 +58,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Rec
           <tbody>
             {(products || []).map((p: any) => {
               const vs = (p.variants || []).filter((v: any) => v.is_active);
-              const img = imgUrl(primaryImage(p));
+              const img = cardImage(p);
               return (
                 <tr key={p.id} className="border-t border-line align-top">
                   <td className="td">

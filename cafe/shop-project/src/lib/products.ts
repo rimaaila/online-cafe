@@ -24,5 +24,10 @@ export function primaryImage(p: any): string | null {
   return imgs[0]?.id ?? null;
 }
 
+// Uploaded photo first, then the optional external image_url (demo / placeholder)
+export function cardImage(p: any, size: 'thumb' | 'full' = 'thumb'): string | null {
+  return imgUrl(primaryImage(p), size) ?? p.image_url ?? null;
+}
+
 export const imgUrl = (id: string | null | undefined, size: 'thumb' | 'full' = 'thumb') =>
   id ? `/api/images/${id}?size=${size}` : null;

@@ -34,6 +34,7 @@ export default function ProductBuy({ product: p, tags }: { product: any; tags: s
         price,
         slug: p.slug,
         image_id: images[0]?.id ?? null,
+        image_url: p.image_url ?? null,
         max: stock,
       },
       qty
@@ -49,6 +50,9 @@ export default function ProductBuy({ product: p, tags }: { product: any; tags: s
           {images.length ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img src={imgUrl(images[imgIdx]?.id, 'full')!} alt={p.name} className="h-full w-full object-cover" />
+          ) : p.image_url ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={p.image_url} alt={p.name} className="h-full w-full object-cover" />
           ) : (
             <div className="flex h-full items-center justify-center text-primary-500"><ChefHat size={64} /></div>
           )}

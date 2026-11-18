@@ -20,6 +20,7 @@ export default function ProductForm({ product, categories }: { product?: any; ca
     stock: product?.stock ?? 0,
     low_stock_threshold: product?.low_stock_threshold ?? 5,
     tags: (product?.tags || []).join(', '),
+    image_url: product?.image_url || '',
   });
   const [variants, setVariants] = useState<Variant[]>(
     (product?.variants || []).map((v: any) => ({ id: v.id, name: v.name, sku: v.sku || '', price: v.price ?? '', stock: v.stock, is_active: v.is_active }))
@@ -77,6 +78,7 @@ export default function ProductForm({ product, categories }: { product?: any; ca
           </select>
         </div>
         <div className="sm:col-span-2"><label className="label">Tags (comma separated, e.g. vegetarian, spicy, halal)</label><input className="input" value={f.tags} onChange={(e) => set('tags', e.target.value)} /></div>
+        <div className="sm:col-span-2"><label className="label">Image URL (optional placeholder, hidden once you upload a photo)</label><input className="input" value={f.image_url} onChange={(e) => set('image_url', e.target.value)} placeholder="https://..." /></div>
         <label className="flex items-center gap-2 text-sm"><input type="checkbox" className="accent-primary-600" checked={f.is_featured} onChange={(e) => set('is_featured', e.target.checked)} /> Featured on the home page</label>
       </section>
 

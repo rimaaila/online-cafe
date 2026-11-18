@@ -1,10 +1,10 @@
 import Link from 'next/link';
 import { ChefHat } from 'lucide-react';
-import { imgUrl, inStock, priceInfo, primaryImage } from '@/lib/products';
+import { cardImage, inStock, priceInfo } from '@/lib/products';
 import { money } from '@/lib/format';
 
 export default function ProductCard({ p }: { p: any }) {
-  const img = imgUrl(primaryImage(p));
+  const img = cardImage(p);
   const { min, max } = priceInfo(p);
   const available = inStock(p);
   return (
